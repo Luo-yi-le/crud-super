@@ -1,0 +1,54 @@
+{
+  "name": "crud-super",
+  "version": "1.6.48",
+  "description": "vue elementUI 增删改查",
+  "main": "lib/crud-super.umd.min.js",
+  "scripts": {
+    "lib:dev": "vue-cli-service build --mode development --target lib --name crud-super --dest lib src/index.js ",
+    "lib": "vue-cli-service build --target lib --name crud-super --dest lib src/index.js ",
+    "serve": "vue-cli-service serve",
+    "publish": "npm publish"
+  },
+  "typings": "types/index.d.ts",
+  "files": [
+    "lib/*.{css, min.js}",
+    "types",
+    "CHANGELOG.md",
+    "component.md"
+  ],
+  "keywords": [
+    "crud",
+    "vue",
+    "components",
+    "增删改查",
+    "wulingshan",
+    "crud-super"
+  ],
+  "author": "wulingshan",
+  "unpkg": "src/index.js",
+  "style": "lib/crud-super.css",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "4.4.6",
+    "@vue/cli-service": "4.4.6",
+    "babel-plugin-dynamic-import-node": "2.3.3",
+    "vue": "2.7.14",
+    "vue-loader": "^15.7.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "vue-class-component": "^7.2.6",
+    "vue-property-decorator": "^9.1.2",
+    "vue-template-compiler": "2.6.12",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.4.0",
+    "@vue/babel-preset-jsx": "^1.4.0",
+    "array.prototype.flat": "^1.3.1",
+    "moment": "^2.29.4",
+    "sortablejs": "^1.15.0"
+   
+  }
+}
