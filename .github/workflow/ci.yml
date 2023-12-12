@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-	  # 触发ci/cd的代码分支
+    # 触发ci/cd的代码分支
       - master
 jobs:
   build:
