@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn
+      - run: npm
       - run: npm run lib
       - run: npm publish
         env:
