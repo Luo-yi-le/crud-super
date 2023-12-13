@@ -288,6 +288,46 @@ export default function ({ __crud, __components, __store, version }) {
                     status: false,
                 },
 
+                editable: {
+                    menu: {
+                        visible: false,
+                        buttons: ["view", "refresh", "check", "edit", "delete", "order-asc", "order-desc"]
+                    },
+                    sortable: {
+                        sort: false,
+                        columns: [],
+                    },
+
+                    refresh: true,
+                    visible: true,
+                    loading: false,
+                    data: [],
+                    columns: [],
+                    selection: [],
+                    props: {
+                        border: true,
+                        stripe: false,
+                        size: this.isSize,
+                        'default-expand-all': true,
+                        'element-loading-text': '拼命加载中...',
+                        'element-loading-background': 'rgba(255, 255, 255, 0.7)',
+                        'element-loading-spinner': 'el-icon-loading',
+                    },
+                    on: {},
+                    op: {
+                        view: false,
+                        props: {
+                            width: 150,
+                            align: 'center',
+                            fixed: 'right',
+                            label: '操作',
+                        },
+                        visible: true,
+                        layout: ['edit', 'delete'],
+                    },
+                    scopedSlots: {},
+                },
+
             };
         },
 
@@ -344,6 +384,9 @@ export default function ({ __crud, __components, __store, version }) {
         created() {
             this.$on("table.selection-change", ({ selection }) => {
                 this.table.selection = selection;
+            });
+            this.$on("editable.selection-change", ({ selection }) => {
+                this.editable.selection = selection;
             });
         },
 

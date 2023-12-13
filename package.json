@@ -34,10 +34,7 @@
     "babel-plugin-dynamic-import-node": "2.3.3",
     "vue": "2.7.14",
     "vue-loader": "^15.7.0",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.1.6",
     "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^9.1.2",
     "vue-template-compiler": "2.6.12",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0"
