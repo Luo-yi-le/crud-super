@@ -1,10 +1,9 @@
-import { clearForm, resetForm, cloneDeep, clone, isFunction, isBoolean, renderForm } from '@/utils';
+import { clearForm, resetForm, cloneDeep, clone, isFunction, isBoolean, renderForm, deepMerge, dataset, certainProperty } from '@/utils';
 import Universally from '@/mixins/universally';
-import Bus from '@/mixins/bus';
-
+import BusMixins from '@/mixins/bus';
 export default {
     name: 'cl-filter',
-    mixins: [Universally, Bus],
+    mixins: [Universally, BusMixins],
     inject: ['crud'],
     props: {
         auto: {
@@ -62,10 +61,6 @@ export default {
         this.sendFilterItemLength(this.items.length)
         this.sendBus()
     },
-    // beforeDestroy() {
-    //     window.$crud && window.$crud.$bus && window.$crud.$bus?.$off('cl-send-toggle-data')
-    // },
-
     methods: {
         sendBus() {
             this.$crud && this.$crud.$bus && this.$crud.$bus.$on('cl-send-toggle-data', value => {
@@ -75,12 +70,31 @@ export default {
         renderForm(options) {
             return renderForm.call(this, options)
         },
+        setData(p, d) {
+            deepMerge(
+                this,
+                dataset(
+                    certainProperty(this, [
+                        'items',
+                        'buttons',
+                        'form',
+                        'props',
+                    ]),
+                    p,
+                    d
+                )
+            );
+        },
+        hiddenItem(k, v = true) {
+            this.setData(`items[prop:${k}].hidden`, v);
+        },
         setFormKey() {
             this.$nextTick(() => {
                 const items = clone(this.items);
                 const map = items.map(item => {
                     this.$set(this.form, item.prop, item.value);
                     return {
+                        hidden: item.hidden,
                         isfilter: item.isfilter,
                         label: item.label,
                         component: item.component,

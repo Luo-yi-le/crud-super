@@ -1,11 +1,11 @@
 {
   "name": "crud-super",
-  "version": "1.6.48",
+  "version": "1.6.49",
   "description": "vue elementUI 增删改查",
   "main": "lib/crud-super.umd.min.js",
   "scripts": {
     "lib:dev": "vue-cli-service build --mode development --target lib --name crud-super --dest lib src/index.js ",
-    "lib": "vue-cli-service build --target lib --name crud-super --dest lib src/index.js ",
+    "lib": "vue-cli-service build --target lib --name crud-super --dest lib src/index.js",
     "serve": "vue-cli-service serve",
     "publish": "npm publish"
   },

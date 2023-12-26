@@ -31,6 +31,7 @@ import MenuTree from '@/lib/menu-tree';
 import { InputSearch, InputSwitch } from '@/lib/inputs/index';
 import { bootstrap } from '@/app';
 import ClFilter from '@/lib/filter';
+import EdiTable from '@/lib/editable';
 import Universally from '@/mixins/universally'
 require('./assets/css/index.css');
 export default function ({ __crud, __components, __store, version }) {
@@ -351,6 +352,7 @@ export default function ({ __crud, __components, __store, version }) {
             InputSwitch,
             ClFilter,
             ToggleBtn,
+            EdiTable,
             ...__components,
         },
 

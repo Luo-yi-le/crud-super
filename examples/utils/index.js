@@ -248,7 +248,6 @@ export function renderForm(options = {}) {
     const { appendEl, forceUpdate, isfilter, refs } = options;
 
     const items = this.items.map((e, i) => {
-
         if (!e.hidden || e.hidden({ scope })) {
             let vnode = null;
 
