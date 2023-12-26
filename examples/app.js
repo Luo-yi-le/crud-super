@@ -20,6 +20,7 @@ export const bootstrap = (that) => {
                 upsert: upsert.$refs['form'],
                 filter: filter.$refs['form'],
                 'adv-search': advSearch.$refs['form'],
+                editbale: table.$refs['editbale'],
             };
 
             return k ? that.refs[k] : that.refs;
