@@ -4,21 +4,9 @@ import * as utils from '@/utils';
 import validator from '@/utils/validator'
 import { DialogDrag, hasPermi, hasRole, contextmenu } from '@/directive';
 import Crud from '@/crud';
-import Form from '@/lib/form';
-import Table from '@/lib/table';
-import Upsert from '@/lib/upsert';
-import MenuTree from '@/lib/menu-tree';
-import Tree from '@/lib/cl-tree/tree'
-import TreeNode from '@/lib/cl-tree/tree-node'
-import flex1 from '@/lib/flex1';
 import ContextMenu from "@/lib/context-menu";
-import Scrollbar from "@/lib/scrollbar";
-import { InputSearch, InputSwitch } from '@/lib/inputs/index';
-import Filter from '@/lib/filter';
-import Divider from '@/lib/divider';
-import '@/assets/css/index.css'
 import filters from '@/filters';
-import ClText from '@/lib/text'
+import component from './component'
 require('@/common/index');
 const version = require('../package.json').version;
 
@@ -47,25 +35,7 @@ export const CRUD = {
         // crud 组件
         Vue.component('cl-crud', Crud({ __crud, __components, __store, version }));
 
-        // 自定义表单组件
-        Vue.component('cl-form', Form);
-
-        Vue.component('cl-flex', flex1);
-
-        Vue.component('cl-tree', Tree);
-        Vue.component('cl-tree-node', TreeNode);
-
-        // 自定义表单组件
-        Vue.component('cl-upsert', Upsert);
-        Vue.component('cl-table', Table);
-        Vue.component('cl-filter', Filter);
-        
-        Vue.component('cl-menu-tree', MenuTree)
-        Vue.component("cl-context-menu", ContextMenu);
-        Vue.component("cl-input-search", InputSearch);
-        Vue.component("cl-input-switch", InputSwitch);
-        Vue.component('cl-text', ClText);
-        Vue.component('cl-divider', Divider);
+        component(Vue);
 
         // 挂载 $crud
         const contextMenu = getInstance(ContextMenu);
@@ -91,7 +61,7 @@ export const CRUD = {
         window.$crud = $crud
 
         Vue.prototype.$crud = $crud
-        Vue.component('cl-scrollbar', Scrollbar);
+        
     },
 };
 

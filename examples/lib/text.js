@@ -12,8 +12,8 @@ export default {
         return <div class='cl-text' {... {
             attrs: ctx.data.attrs,
             on: ctx.listeners,
-            class: ctx?.data?.class,
-            style: ctx.data.style
+            class: ctx?.data?.staticClass,
+            style: ctx?.data?.staticStyle
         }}>
             {ctx.slots().default ? ctx.slots().default : ctx.props.value}
         </div>

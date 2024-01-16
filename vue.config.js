@@ -22,6 +22,11 @@ module.exports = {
             umdNamedDefine: true,
         }
     },
+    chainWebpack(config) {
+        // config.optimization.minimize(true)
+        config.plugins.delete('preload') // TODO: need test
+        config.plugins.delete('prefetch') // TODO: need test
+    },
     // publicPath: './lib/',
     // pages: {
     //     index: {

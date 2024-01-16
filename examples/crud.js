@@ -290,6 +290,12 @@ export default function ({ __crud, __components, __store, version }) {
                 },
 
                 editable: {
+                    form: {
+                        props: {
+                            size: this.isSize,
+                            'label-width': '80px',
+                        }
+                    },
                     menu: {
                         visible: false,
                         buttons: ["view", "refresh", "check", "edit", "delete", "order-asc", "order-desc"]
