@@ -147,9 +147,12 @@ export default {
             this.selectedLabel = this.getNodesText(dt, isArray(this.value) ? this.value : [this.value])
         }
     },
-    async mounted() {
-        await this.$nextTick()
-        this.bindMethods()
+    mounted() {
+        // await this.$nextTick()
+        if (!this.elDisabled) {
+            this.bindMethods()
+     
+        }
     },
 
     methods: {
@@ -175,11 +178,10 @@ export default {
                     "append",
                     "insertAfter",
                 ];
-                if (!this.elDisabled) {
-                    methods.forEach((n) => {
-                        this[n] = this.$refs["tree"][n];
-                    });
-                }
+                methods.forEach((n) => {
+                    this[n] = this.$refs["tree"][n];
+                });
+                
 
             })
         },
