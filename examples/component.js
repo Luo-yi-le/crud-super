@@ -15,6 +15,7 @@ import ClText from '@/lib/text'
 import ClTeleport from '@/lib/teleport';
 import ClSelect from '@/lib/select';
 import ContextMenu from "@/lib/context-menu";
+import ClTreeSelect from '@/lib/tree-select';
 export default  (Vue, option) => {
     
     // 自定义表单组件
@@ -43,4 +44,5 @@ export default  (Vue, option) => {
 
 
     Vue.component(ClSelect.name, ClSelect);
+    Vue.component(ClTreeSelect.name, ClTreeSelect);
 }
