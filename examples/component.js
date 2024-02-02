@@ -13,6 +13,7 @@ import Divider from '@/lib/divider';
 import '@/assets/css/index.css'
 import ClText from '@/lib/text'
 import ClTeleport from '@/lib/teleport';
+import TableVirtualScroll from '@/lib/table-virtual-scroll';
 import ClSelect from '@/lib/select';
 import ContextMenu from "@/lib/context-menu";
 import ClTreeSelect from '@/lib/tree-select';
@@ -45,4 +46,6 @@ export default  (Vue, option) => {
 
     Vue.component(ClSelect.name, ClSelect);
     Vue.component(ClTreeSelect.name, ClTreeSelect);
+
+    Vue.component(TableVirtualScroll.name, TableVirtualScroll);
 }

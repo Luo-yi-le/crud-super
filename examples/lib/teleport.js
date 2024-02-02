@@ -21,7 +21,6 @@ export default {
     },
 
     render() {
-        console.log(this)
         return (
             <div>
                 {this.$slots.default}

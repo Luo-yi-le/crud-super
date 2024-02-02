@@ -70,28 +70,22 @@ const defaultFormats = {
         const keys = attrs?.keys || props?.keys || ['startDate', 'endDate'];
         if (attrs?.type == 'date' || props?.type == 'date') {
             d = moment(value).format("YYYY-MM-DD")
-        }
-
-        if (attrs?.type == 'month' || props?.type == 'month') {
+        } else if (attrs?.type == 'month' || props?.type == 'month') {
             d = moment(value).format("YYYY-MM")
-        }
-
-        if (attrs?.type == 'year' || props?.type == 'year') {
+        } else if (attrs?.type == 'year' || props?.type == 'year') {
             d = moment(value).format("YYYY")
-        }
-
-        if (attrs?.type == 'datetime' || props?.type == 'datetime') {
+        } else if (attrs?.type == 'datetime' || props?.type == 'datetime') {
             d = moment(value).format("YYYY-MM-DD HH:mm:ss")
-        }
-
-        if (attrs?.type == 'datetimerange' || props?.type == 'datetimerange') {
+        } else if (attrs?.type == 'datetimerange' || props?.type == 'datetimerange') {
             const rangeSeparator = attrs?.rangeSeparator || attrs['range-separator'] || props?.rangeSeparator || props['range-separator'] || ' 至 ';
             d = moment(scope[keys[0]]).format("YYYY-MM-DD HH:mm:ss") + rangeSeparator + moment(scope[keys[1]]).format("YYYY-MM-DD HH:mm:ss")
-        }
-
-        if (attrs?.type == 'daterange' || props?.type == 'daterange') {
+        } else if (attrs?.type == 'daterange' || props?.type == 'daterange') {
             const rangeSeparator = attrs?.rangeSeparator || attrs['range-separator'] || props?.rangeSeparator || props['range-separator'] || ' 至 ';
             d = moment(scope[keys[0]]).format("YYYY-MM-DD") + rangeSeparator + moment(scope[keys[1]]).format("YYYY-MM-DD")
+        } else {
+            if(value) {
+                d = value
+            }
         }
         return h('cl-text', jsx, d)
     },
@@ -132,7 +126,7 @@ const defaultFormats = {
 }
 
 export default {
-    format({ h, scope, child,  nextTick }, items, jsx) {
+    format({ h, scope, child, nextTick }, items, jsx) {
         let {
             name,
             attrs = {},

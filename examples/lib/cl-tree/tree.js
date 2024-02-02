@@ -4,7 +4,7 @@ export default {
     name: "cl-tree",
     provide() {
         return {
-            okrEventBus: this.okrEventBus
+            eventBus: this.eventBus
         };
     },
     props: {
@@ -85,7 +85,7 @@ export default {
         },
         animateName: {
             type: String,
-            default: "okr-zoom-in-center"
+            default: "cl-zoom-in-center"
         },
         animateDuration: {
             type: Number,
@@ -101,7 +101,7 @@ export default {
     },
     data() {
         return {
-            okrEventBus: this.$crud.$bus,
+            eventBus: this.$crud.$bus,
             store: null,
             root: null
         };

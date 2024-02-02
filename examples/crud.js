@@ -54,6 +54,11 @@ export default function ({ __crud, __components, __store, version }) {
             size: {
                 type: String,
                 default: 'small'
+            },
+            virtualScroll: Boolean,
+            buffer: {
+                type: Number,
+                default: 300
             }
         },
 

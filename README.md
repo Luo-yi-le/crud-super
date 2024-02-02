@@ -1,5 +1,6 @@
 # CrudSuper
 
+### <a href="CHANGELOG.md">更新日志</a>
 ### [更新日志](/CHANGELOG.md)
 ### [组件](/component.md)
 

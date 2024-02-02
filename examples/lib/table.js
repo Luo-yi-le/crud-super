@@ -11,13 +11,17 @@ export default {
         table() {
             return this.crud.table;
         },
+        virtualScroll() {
+            return this.crud.virtualScroll
+        }
     },
 
     data() {
         return {
             maxHeight: null,
             viewing: false,
-            filterData: {}
+            filterData: {},
+            virtualList: []
         };
     },
 
@@ -555,14 +559,14 @@ export default {
     render(h) {
         const { data, op, loading, on, props, refresh, scopedSlots } = this.table;
         const { columnEl, opEl } = this.renderEl(h);
-
-        return (
+        let tableEl = null
+        const El=(
             this.table.visible && (
                 <div class="crud-data-table">
                     {
                         refresh && (<el-table
                             ref="table"
-                            data={data}
+                            data={this.virtualScroll ? this.virtualList : data}
                             on-row-contextmenu={this.onRowContextMenu}
                             on-selection-change={this.selectionChange}
                             on-sort-change={this.sortChange}
@@ -580,8 +584,20 @@ export default {
                         </el-table>)
                     }
                 </div>
-
             )
         );
+        // return this.virtualScroll ? ()
+        if(this.virtualScroll) {
+            tableEl = (
+                <cl-table-virtual-scroll buffer={this.crud.buffer} height={this.maxHeight} on-change={renderData=>(this.virtualList =renderData)} data={data} row-key={props.rowKey ||props['row-key']}>
+                    {El}
+                </cl-table-virtual-scroll>
+            )
+        } else {
+            tableEl = El
+        }
+
+        return tableEl
+
     }
 };

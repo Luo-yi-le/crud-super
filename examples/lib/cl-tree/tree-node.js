@@ -1,7 +1,7 @@
 import { getNodeKey, flexColumnWidth } from '@/utils/index'
 export default {
     name: 'cl-tree-node',
-    inject: ['okrEventBus', 'crud'],
+    inject: ['eventBus', 'crud'],
     props: {
         props: {
             type: Object,

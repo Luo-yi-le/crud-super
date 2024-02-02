@@ -572,3 +572,21 @@ export const flexColumnWidth = (str) => {
     }
     return flexWidth + 'px'
 }
+
+export function throttle(func, delay) {
+    let flag = true;
+    return function () {
+        const _this = this;
+        const args = arguments;
+        if (!flag) {
+            return false
+        }
+
+        func.apply(_this, args)
+        flag = true
+
+        setTimeout(() => {
+            flag = true
+        }, delay)
+    }
+}

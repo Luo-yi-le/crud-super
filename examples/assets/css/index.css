@@ -1056,6 +1056,20 @@
   height: 100%;
   width: 100%;
 }
+.cl-scrollbar .el-scrollbar{
+  height: 100%;
+  width: 100%;
+}
+
+.cl-overflow-x .el-scrollbar__wrap{
+  overflow-x: var(--cl-overflow-x);
+}
+.cl-overflow-y .el-scrollbar__wrap{
+  overflow-y:var(--cl-overflow-y);
+}
+.cl-overflow-x-y .el-scrollbar__wrap{
+  overflow: var(--cl-overflow-x-y);
+}
 
 .cl-filter {
   width: 100%;
