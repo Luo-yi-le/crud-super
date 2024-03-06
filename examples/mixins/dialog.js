@@ -42,7 +42,7 @@ export default {
             const { title, drag, renderTitle } = this.props;
             const { layout = [] } = this.hdr;
             const { fullscreen } = this.dialog;
-
+            const appendTitle = renderTitle ? renderTitle : ''
             return (
                 <div
                     class="el-dialog__header-slot"
@@ -63,7 +63,7 @@ export default {
                         },
                     }}>
                     <span class="el-dialog__header-slot-title">
-                        {title || (this.viewing ? '查看' + renderTitle : (this.isEdit ? '编辑' + renderTitle : '新增' + renderTitle))}
+                        {title || (this.viewing ? '查看' + appendTitle : (this.isEdit ? '编辑' + appendTitle : '新增' + appendTitle))}
                     </span>
 
                     <div class="el-dialog__header-slot-button">

@@ -557,7 +557,7 @@ export default {
     },
 
     render(h) {
-        const { data, op, loading, on, props, refresh, scopedSlots } = this.table;
+        const { data, op, loading, on, props, refresh, scopedSlots, directives=[] } = this.table;
         const { columnEl, opEl } = this.renderEl(h);
         let tableEl = null
         const El=(
@@ -577,7 +577,8 @@ export default {
                                 props,
                                 scopedSlots: {
                                     ...scopedSlots
-                                }
+                                },
+                                directives
                             }}>
                             {columnEl}
                             {op.visible && opEl}

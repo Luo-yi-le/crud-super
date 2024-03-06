@@ -1,6 +1,6 @@
 {
   "name": "crud-super",
-  "version": "1.6.54",
+  "version": "1.6.56",
   "description": "vue elementUI 增删改查",
   "main": "lib/crud-super.umd.min.js",
   "scripts": {

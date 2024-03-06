@@ -188,6 +188,9 @@ export default function ({ __crud, __components, __store, version }) {
                         layout: ['edit', 'delete'],
                     },
                     scopedSlots: {},
+                    directives: [
+                        // {name: 'loading'}
+                    ],
                 },
                 search: {
                     query: {

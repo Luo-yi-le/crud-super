@@ -18,6 +18,7 @@ export default {
         const overflowY = this.overflowY ? 'cl-overflow-y' : '';
         const overflow = this.overflow ? 'cl-overflow-x-y' : '';
         const style = {
+            height: this.height,
             '--cl-overflow-x' : this.overflowX,
             '--cl-overflow-y' : this.overflowY,
             '--cl-overflow-x-y' : this.overflow,

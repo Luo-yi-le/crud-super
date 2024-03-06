@@ -243,19 +243,18 @@ export function renderNode(vnode, options = {}) {
 let formItemNameIndex = 0;
 
 export function renderForm(options = {}) {
+    const {viewing, isEdit, dialog} = this;
     const h = this.$createElement;
     const scope = this.form;
     const { appendEl, forceUpdate, isfilter, refs } = options;
 
     const items = this.items.map((e, i) => {
-        if (!e.hidden || e.hidden({ scope })) {
+        if (!e.hidden || e.hidden({ scope, view: viewing, edit: isEdit })) {
             let vnode = null;
 
             if (isFunction(e.component)) {
-                vnode = e.component({ scope, h });
+                vnode = e.component({ scope, h, view: viewing, edit: isEdit });
             } else {
-
-
                 let {
                     vm,
                     name,
@@ -282,12 +281,12 @@ export function renderForm(options = {}) {
                 let disabled = false
 
                 if (typeof props?.disabled == 'function') {
-                    disabled = props.disabled({ scope })
+                    disabled = props.disabled({ scope, view: viewing, edit: isEdit })
                 } else {
                     disabled = props?.disabled
                 }
                 if (typeof attrs?.disabled == 'function') {
-                    disabled = attrs.disabled({ scope })
+                    disabled = attrs.disabled({ scope, view: viewing, edit: isEdit })
                 } else {
                     disabled = attrs?.disabled
                 }
@@ -328,7 +327,7 @@ export function renderForm(options = {}) {
                     },
                 };
                 if (vm && isFunction(vm)) {
-                    vnode = vm({ scope, h, view: this.viewing });
+                    vnode = vm({ scope, h, view: viewing, edit: isEdit });
                 } else if (context) {
                     vnode = e.component;
                 } else if (render) {
@@ -365,7 +364,7 @@ export function renderForm(options = {}) {
                     } else if (name.includes('slot-')) {
                         let rn = this.crud ? this.crud.$scopedSlots[name] : this.$scopedSlots[name];
                         if (rn) {
-                            vnode = rn({ scope });
+                            vnode = rn({ scope, view: viewing, edit: isEdit });
                         }
                     } else {
                         children = (e.component.options || []).map((e, i) => {
@@ -399,7 +398,7 @@ export function renderForm(options = {}) {
                             }
                         });
 
-                        if (this.viewing) {
+                        if (viewing) {
                             const value = make.format({ h, scope, nextTick: this.$nextTick, child: children }, e, jsx);
                             vnode = (<cl-text value={value}></cl-text>)
                         } else {
@@ -484,16 +483,20 @@ export function renderForm(options = {}) {
                         ...this.props,
                     },
                 }}>
-                <el-row
-                    v-loading={this.loading}
-                    {...{
-                        attrs: {
-                            ...this['v-loading'],
-                        },
-                    }}>
-                    {items}
-                    {appendEl}
-                </el-row>
+                <cl-scrollbar {...{
+                    props: !dialog?.fullscreen ? { ...this.props }: {},
+                }}>
+                    <el-row
+                        v-loading={this.loading}
+                        {...{
+                            attrs: {
+                                ...this['v-loading'],
+                            },
+                        }}>
+                        {items}
+                        {appendEl}
+                    </el-row>
+                </cl-scrollbar>
             </el-form>
         )
     }
