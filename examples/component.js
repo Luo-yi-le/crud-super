@@ -8,6 +8,7 @@ import TreeNode from '@/lib/cl-tree/tree-node'
 import flex1 from '@/lib/flex1';
 import Scrollbar from "@/lib/scrollbar";
 import { InputSearch, InputSwitch, ClInput } from '@/lib/inputs/index';
+import { Flexbox, FlexboxItem } from '@/lib/flexbox/index';
 import Filter from '@/lib/filter';
 import Divider from '@/lib/divider';
 import '@/assets/css/index.css'
@@ -17,7 +18,12 @@ import TableVirtualScroll from '@/lib/table-virtual-scroll';
 import ClSelect from '@/lib/select';
 import ContextMenu from "@/lib/context-menu";
 import ClTreeSelect from '@/lib/tree-select';
+import ClEmpty from '@/lib/empty';
 export default  (Vue, option) => {
+
+    Vue.component(ClEmpty.name, ClEmpty);
+    Vue.component(Flexbox.name, Flexbox);
+    Vue.component(FlexboxItem.name, FlexboxItem);
     
     // 自定义表单组件
     Vue.component('cl-input', ClInput);
